@@ -4,134 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Refined Claymore | Familia Legendaria</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --accent-color: #ff0000; /* Rojo Claymore */
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-        }
-
+        * { box-sizing: border-box; }
+        
         body {
-            background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 50% -20%, #1e2530 0%, #0d1117 80%);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
+            background: #050505;
+            /* Efecto de luz ambiental en la esquina */
+            background-image: radial-gradient(circle at 0% 0%, #1a0505 0%, #050505 50%);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
             margin: 0;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
+            padding: 20px;
         }
 
-        .main-card {
-            width: 90%;
-            max-width: 450px;
+        .wrapper {
+            width: 100%;
+            max-width: 400px;
             text-align: center;
-            padding: 40px 20px;
-            animation: fadeIn 1.2s ease-out;
+            animation: fadeIn 1s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; scale: 0.95; }
+            to { opacity: 1; scale: 1; }
         }
 
-        .profile-img {
-            width: 100px;
-            height: 100px;
+        .avatar {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-            border-color: var(--accent-color);
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin: 10px 0;
-            font-style: italic;
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin: 0;
+            letter-spacing: -0.5px;
         }
 
-        .subtitle {
-            color: var(--text-dim);
+        .tag {
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            margin-top: 5px;
             margin-bottom: 30px;
+            display: block;
         }
 
-        .description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-dim);
-            margin-bottom: 40px;
-        }
-
-        .links-stack {
+        .links-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
-        .link-item {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 16px;
-            border-radius: 8px;
+        .link-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px;
+            border-radius: 16px;
             text-decoration: none;
-            color: var(--text-main);
+            color: #ffffff;
+            font-size: 1rem;
             font-weight: 400;
-            transition: 0.3s all ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .link-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+        /* El brillo al pasar el mouse típico de Carrd */
+        .link-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* Footer sutil */
+        .link-card::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .link-card:hover::after {
+            opacity: 1;
+        }
+
         footer {
-            margin-top: 50px;
-            font-size: 0.7rem;
-            color: #444;
-            letter-spacing: 1px;
+            margin-top: 40px;
+            font-size: 0.75rem;
+            opacity: 0.3;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-card">
-        <img src="https://github.com/Refinedclaymore.png" alt="Profile" class="profile-img">
+    <div class="wrapper">
+        <img src="https://github.com/Refinedclaymore.png" alt="Refined Claymore" class="avatar">
         
         <h1>Refined Claymore</h1>
-        <div class="subtitle">Familia Legendaria</div>
-        
-        <p class="description">
-            Creador de contenido sobre videojuegos y sus curiosidades. 
-            Explora mis mundos y acompáñame en cada aventura.
-        </p>
+        <span class="tag">@_refinedclaymore_</span>
 
-        <div class="links-stack">
-            <a href="https://www.youtube.com/@RefinedClaymore-i5n" class="link-item">YouTube</a>
-            <a href="https://www.twitch.tv/refinedclay" class="link-item">Twitch</a>
-            <a href="https://www.tiktok.com/@_refinedclaymore_" class="link-item">TikTok</a>
-            <a href="https://www.instagram.com/_refinedclaymore_/" class="link-item">Instagram</a>
+        <div class="links-container">
+            <a href="https://www.youtube.com/@RefinedClaymore-i5n" class="link-card">Youtube</a>
+            <a href="https://www.twitch.tv/refinedclay" class="link-card">Twitch</a>
+            <a href="https://www.tiktok.com/@_refinedclaymore_" class="link-card">TikTok</a>
+            <a href="https://www.instagram.com/_refinedclaymore_/" class="link-card">Instagram</a>
         </div>
 
-        <footer>© REFINED CLAYMORE</footer>
+        <footer>FAMILY LEGENDARY</footer>
     </div>
 
 </body>
